@@ -1,0 +1,43 @@
+# Create another dog branch and merge
+I commit-setup.inc
+> branch dog
+<<<
++ cfile.txt wug2.txt
+> add cfile.txt
+<<<
+> rm bfile.txt
+<<<
+> commit "Added cfile and removed bfile"
+<<<
+> checkout o
+No such branch exists.
+<<<
+> checkout dog
+<<<
+> rm afile.txt
+<<<
++ dfile.txt wug3.txt
+> add dfile.txt
+<<<
+> commit "Added dfile and removed afile"
+<<<
+> checkout master
+<<<
+> merge o
+A branch with that name does not exist.
+<<<
+> merge dog
+<<<
+* afile.txt
+* bfile.txt
+= cfile.txt wug2.txt
+= dfile.txt wug3.txt
+> log
+===
+${COMMIT_HEAD}
+Merged dog into master\.
+
+${ARBLINES}
+<<<*
+I blank-dog-status.inc
+

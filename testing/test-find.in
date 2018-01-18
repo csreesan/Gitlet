@@ -1,0 +1,46 @@
+# Test the find command when it succeeds.
+I commit-setup.inc
+> rm afile.txt
+<<<
+> commit "Remove afile"
+<<<
++ afile.txt notwug.txt
+> add afile.txt
+<<<
+> commit "Added afile and bfile"
+<<<
+> log
+===
+${COMMIT_HEAD}
+Added afile and bfile
+
+===
+${COMMIT_HEAD}
+Remove afile
+
+===
+${COMMIT_HEAD}
+Added afile and bfile
+
+===
+${COMMIT_HEAD}
+initial commit
+
+<<<*
+# UID of initial version
+D UID1 "${4}"
+# UID of second version
+D UID2 "${3}"
+# UID of third version
+D UID3 "${2}"
+# UID of current version
+D UID4 "${1}"
+> find "initial commit"
+${UID1}
+<<<
+> find "Remove afile"
+${UID3}
+<<<
+> find "Added afile and bfile"
+(${UID4}\n${UID2}|${UID2}\n${UID4})
+<<<*

@@ -1,0 +1,21 @@
+# Set up a simple chain of commits and check their log.
+> init
+<<<
+# Each ${HEADER} captures its commit UID.
+D UID "[a-f0-9]+"
+D HEADER "commit (${UID})"
+D DATE "Date: \w\w\w \w\w\w \d+ \d\d:\d\d:\d\d \d\d\d\d [-+]\d\d\d\d"
+> log
+===
+${HEADER}
+${DATE}
+initial commit
+
+<<<*
+> global-log
+===
+${HEADER}
+${DATE}
+initial commit
+
+<<<*

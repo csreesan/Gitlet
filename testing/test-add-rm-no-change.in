@@ -1,0 +1,16 @@
+# Check add and no change because already added, and removing and
+# adding the same file also should lead to no change
+I commit-setup.inc
+> add afile.txt
+<<<
+I blank-status.inc
+> add bfile.txt
+<<<
+I blank-status.inc
+> rm afile.txt
+<<<
+* afile.txt
++ afile.txt wug.txt
+> add afile.txt
+<<<
+I blank-status.inc
